@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Subodh Bhagwat | Software Engineer</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+        rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link href="style.css" rel="stylesheet" />
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1a1a1a",
+                        "background-light": "#fdfbf7",
+                        "background-dark": "#121212",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1e1e1e",
+                        "warm-peach": "#ffe4d6",
+                        "warm-peach-dark": "#3d2b22",
+                        "soft-lavender": "#e6e1ff",
+                        "soft-lavender-dark": "#2d2645",
+                        "mint-green": "#e0f2e9",
+                        "mint-green-dark": "#1b3326",
+                        "accent-lime": "#d9f99d",
+                        "accent-yellow": "#fef08a",
+                    },
+                    fontFamily: {
+                        display: ['"Instrument Serif"', 'serif'],
+                        sans: ['"Inter"', 'sans-serif'],
+                    },
+                    borderRadius: {
+                        DEFAULT: "1rem",
+                        'xl': "1.5rem",
+                        '2xl': "2rem",
+                    },
+                    backgroundImage: {
+                        'sky-gradient': 'linear-gradient(180deg, #60a5fa 0%, #93c5fd 50%, #fdfbf7 100%)',
+                        'sky-gradient-dark': 'linear-gradient(180deg, #1e3a8a 0%, #1e40af 50%, #121212 100%)',
+                    }
+                },
+            },
+        };
+    </script>
+
+    <!-- Lenis CSS for smooth scrolling -->
+    <style>
+        html.lenis,
+        html.lenis body {
+            height: auto;
+        }
+
+        .lenis.lenis-smooth {
+            scroll-behavior: auto !important;
+        }
+
+        .lenis.lenis-smooth [data-scroll-container] {
+            will-change: transform;
+        }
+
+        .lenis.lenis-stopped {
+            overflow: hidden;
+        }
+
+        .lenis.lenis-scrolling iframe {
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark text-primary dark:text-gray-100 transition-colors duration-300 antialiased font-sans flex flex-col min-h-screen">
+
+    <!-- Navigation -->
+    <nav
+        class="fixed top-0 left-0 right-0 z-50 px-6 py-4 flex justify-between items-center backdrop-blur-md bg-white/70 dark:bg-black/70 border-b border-gray-200 dark:border-gray-800 gsap-nav">
+        <div class="flex items-center gap-2">
+            <div
+                class="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white font-display text-xl italic">
+                SB</div>
+            <span class="font-semibold tracking-tight">Subodh Bhagwat</span>
+        </div>
+        <div class="hidden md:flex gap-8 text-sm font-medium">
+            <a class="hover:text-gray-500 dark:hover:text-gray-300 transition" href="#work">Projects</a>
+            <a class="hover:text-gray-500 dark:hover:text-gray-300 transition" href="#about">About</a>
+            <a class="hover:text-gray-500 dark:hover:text-gray-300 transition" href="#contact">Contact</a>
+        </div>
+        <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition">
+            <span class="material-symbols-outlined text-lg theme-icon">contrast</span>
+        </button>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative pt-32 pb-24 lg:pt-48 lg:pb-32 px-6 overflow-hidden flex-grow flex flex-col justify-center">
+        <div class="absolute inset-0 bg-sky-gradient dark:bg-sky-gradient-dark opacity-20 -z-10 bg-animation"></div>
+        <div class="absolute top-0 left-0 w-full h-full opacity-40 dark:opacity-20 pointer-events-none -z-10 noise-bg">
+        </div>
+
+        <div class="max-w-5xl mx-auto text-center gsap-hero">
+            <p class="text-xs font-bold tracking-widest uppercase mb-6 opacity-70 hero-item">Computer Engineering
+                Student @ KTH</p>
+            <h1
+                class="font-display text-6xl md:text-8xl lg:text-9xl leading-[0.9] text-primary dark:text-white mb-8 hero-item">
+                Engineering <span class="italic text-gray-600 dark:text-gray-400">systems,</span><br />
+                designed for <span
+                    class="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">humans.</span>
+            </h1>
+            <p class="text-lg md:text-xl max-w-2xl mx-auto text-gray-700 dark:text-gray-300 leading-relaxed hero-item">
+                Crafting robust systems and intelligent applications. I turn complex algorithms and data structures into
+                scalable, efficient software.
+            </p>
+            <div class="mt-12 flex justify-center gap-4 hero-item">
+                <a class="bg-primary text-white px-8 py-4 rounded-full font-medium hover:scale-105 transition transform shadow-lg hover:shadow-xl"
+                    href="#work">View Projects</a>
+                <a class="bg-white dark:bg-gray-800 text-primary dark:text-white border border-gray-200 dark:border-gray-700 px-8 py-4 rounded-full font-medium hover:bg-gray-50 dark:hover:bg-gray-700 transition"
+                    href="#contact">Get in Touch</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Background Section -->
+    <section class="bg-warm-peach dark:bg-warm-peach-dark py-24 px-6 relative overflow-hidden" id="about">
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <p class="text-xs font-bold tracking-widest uppercase mb-6 opacity-60 reveal-text">My Background</p>
+            <h2 class="font-display text-4xl md:text-5xl leading-tight mb-8 reveal-text">
+                Currently pursuing my Master's & Bachelor's in <span class="italic">Computer Engineering and
+                    Science</span> at Kungliga Tekniska Högskolan.
+            </h2>
+            <div class="flex justify-center mb-8 icon-spin">
+                <span class="material-symbols-outlined text-4xl opacity-50">school</span>
+            </div>
+            <p class="text-lg leading-relaxed opacity-80 reveal-text">
+                With a 4.63/5 GPA, I specialize in Software Engineering, Data Structures, Algorithms, Operating Systems,
+                and Functional Programming. I'm passionate about low-level optimization as well as building high-level
+                scalable applications.
+            </p>
+        </div>
+        <div
+            class="absolute top-10 left-10 w-64 h-64 bg-white/20 dark:bg-white/5 rounded-full blur-3xl pointer-events-none blob">
+        </div>
+        <div
+            class="absolute bottom-10 right-10 w-80 h-80 bg-orange-400/10 dark:bg-orange-900/10 rounded-full blur-3xl pointer-events-none blob">
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="py-24 px-6 bg-surface-light dark:bg-surface-dark">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="pr-0 md:pr-12 reveal-side-left">
+                    <h2 class="font-display text-4xl md:text-5xl mb-6">The technical<br />arsenal</h2>
+                    <p class="text-gray-600 dark:text-gray-400 text-lg mb-8">
+                        Engineering requires the right tools for the job. I combine low-level understanding with modern
+                        frameworks to build robust architectures.
+                    </p>
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl aspect-[4/3] group image-reveal">
+                        <!-- Abstract coding background -->
+                        <div
+                            class="w-full h-full bg-gray-900 flex items-center justify-center text-blue-400 font-mono text-xs overflow-hidden absolute inset-0 transform group-hover:scale-110 transition duration-1000 ease-out p-8 leading-loose opacity-80">
+                            def diffie_hellman(p, g, a, b):<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;A = (g ** a) % p<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;B = (g ** b) % p<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;secret_A = (B ** a) % p<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;secret_B = (A ** b) % p<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;assert secret_A == secret_B<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;return secret_A<br />
+                            <br />
+                            // Initializing Postgres Connection pool<br />
+                            pool, err := pgxpool.Connect(context.Background(), dbUrl)
+                        </div>
+                        <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition duration-500">
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-soft-lavender dark:bg-soft-lavender-dark rounded-3xl p-8 md:p-12 relative overflow-hidden reveal-side-right shadow-2xl">
+                    <div
+                        class="absolute top-0 right-0 w-64 h-64 bg-white dark:bg-gray-800 rounded-full blur-3xl opacity-30 -mr-16 -mt-16 pointer-events-none">
+                    </div>
+                    <h3 class="font-bold text-xl mb-8 relative z-10">Languages</h3>
+                    <div class="flex flex-wrap gap-3 relative z-10 tag-stagger mb-8">
+                        <span
+                            class="px-5 py-2.5 rounded-full bg-accent-lime text-black font-medium text-sm hover:-translate-y-1 transition duration-300 shadow-sm cursor-default">Python</span>
+                        <span
+                            class="px-5 py-2.5 rounded-full bg-accent-yellow text-black font-medium text-sm hover:-translate-y-1 transition duration-300 shadow-sm cursor-default">Java</span>
+                        <span
+                            class="px-5 py-2.5 rounded-full bg-white dark:bg-gray-700 dark:text-white text-black font-medium text-sm shadow-sm hover:-translate-y-1 transition duration-300 cursor-default">C
+                            / C++</span>
+                        <span
+                            class="px-5 py-2.5 rounded-full bg-[#ffcbf2] text-black font-medium text-sm hover:-translate-y-1 transition duration-300 shadow-sm cursor-default">Go</span>
+                        <span
+                            class="px-5 py-2.5 rounded-full bg-[#a5f3fc] text-black font-medium text-sm hover:-translate-y-1 transition duration-300 shadow-sm cursor-default">SQL</span>
+                        <span
+                            class="px-5 py-2.5 rounded-full bg-white dark:bg-gray-700 dark:text-white text-black font-medium text-sm shadow-sm hover:-translate-y-1 transition duration-300 cursor-default">Haskell</span>
+                        <span
+                            class="px-5 py-2.5 rounded-full bg-[#fed7aa] text-black font-medium text-sm hover:-translate-y-1 transition duration-300 shadow-sm cursor-default">Assembly</span>
+                    </div>
+
+                    <h3 class="font-bold text-xl mb-6 relative z-10 mt-4">Technologies</h3>
+                    <div class="flex flex-wrap gap-3 relative z-10 tag-stagger">
+                        <span
+                            class="px-5 py-2.5 rounded-full bg-white dark:bg-gray-700 dark:text-white text-black font-medium text-sm shadow-sm hover:-translate-y-1 transition duration-300 cursor-default">Docker</span>
+                        <span
+                            class="px-5 py-2.5 rounded-full bg-[#e9d5ff] text-black font-medium text-sm hover:-translate-y-1 transition duration-300 shadow-sm cursor-default">PostgreSQL</span>
+                        <span
+                            class="px-5 py-2.5 rounded-full bg-white dark:bg-gray-700 dark:text-white text-black font-medium text-sm shadow-sm hover:-translate-y-1 transition duration-300 cursor-default">Spring</span>
+                        <span
+                            class="px-5 py-2.5 rounded-full bg-white dark:bg-gray-700 dark:text-white text-black font-medium text-sm shadow-sm hover:-translate-y-1 transition duration-300 cursor-default">Dash</span>
+                        <span
+                            class="px-5 py-2.5 rounded-full bg-[#d0f4de] text-black font-medium text-sm hover:-translate-y-1 transition duration-300 shadow-sm cursor-default">GitHub</span>
+                        <span
+                            class="px-5 py-2.5 rounded-full bg-white dark:bg-gray-700 dark:text-white text-black font-medium text-sm shadow-sm hover:-translate-y-1 transition duration-300 cursor-default">MATLAB</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="py-24 px-6 bg-mint-green dark:bg-mint-green-dark" id="work">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 header-reveal">
+                <div>
+                    <p class="text-xs font-bold tracking-widest uppercase mb-4 opacity-60">Selected Work</p>
+                    <h2 class="font-display text-4xl md:text-5xl">Engineering Projects</h2>
+                </div>
+                <a class="hidden md:inline-flex items-center gap-2 border-b border-current pb-1 hover:opacity-60 transition mt-4 md:mt-0 group"
+                    href="https://github.com/oniwasgone" target="_blank">
+                    View GitHub <span
+                        class="material-symbols-outlined text-sm group-hover:translate-x-1 group-hover:-translate-y-1 transition transform">arrow_outward</span>
+                </a>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Project 1 -->
+                <div
+                    class="group bg-white dark:bg-gray-800 rounded-3xl p-6 transition-all duration-500 hover:shadow-2xl border border-transparent hover:border-gray-200 dark:hover:border-gray-700 project-card flex flex-col h-full">
+                    <div class="flex justify-between items-start mb-6">
+                        <div
+                            class="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400">
+                            <span class="material-symbols-outlined">smart_toy</span>
+                        </div>
+                        <span class="text-xs font-mono text-gray-500">2026</span>
+                    </div>
+                    <div class="flex-grow">
+                        <h3
+                            class="text-2xl font-display mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition">
+                            Realtime AI Sales Assistant</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-6">Engineered a local application integrating the
+                            OpenAI API for real-time sales call assistance. Implemented live audio transcription and
+                            context-aware query handling.</p>
+                    </div>
+                    <div class="flex gap-2 flex-wrap mt-auto">
+                        <span
+                            class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-xs font-medium">Python</span>
+                        <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-xs font-medium">OpenAI
+                            API</span>
+                        <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-xs font-medium">AI &
+                            Audio</span>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="group bg-white dark:bg-gray-800 rounded-3xl p-6 transition-all duration-500 hover:shadow-2xl border border-transparent hover:border-gray-200 dark:hover:border-gray-700 project-card flex flex-col h-full"
+                    style="transform: translateY(40px);">
+                    <div class="flex justify-between items-start mb-6">
+                        <div
+                            class="w-12 h-12 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
+                            <span class="material-symbols-outlined">monitoring</span>
+                        </div>
+                        <span class="text-xs font-mono text-gray-500">2026</span>
+                    </div>
+                    <div class="flex-grow">
+                        <h3
+                            class="text-2xl font-display mb-3 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition">
+                            Client Data Visualization</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-6">Co-developed a dashboard for Bengt Dahlgren to
+                            render complex battery datasets from a Python backend. Acted as Scrum Master in an 8-person
+                            Agile team.</p>
+                    </div>
+                    <div class="flex gap-2 flex-wrap mt-auto">
+                        <span
+                            class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-xs font-medium">Dash</span>
+                        <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-xs font-medium">Python
+                            Frontend</span>
+                        <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-xs font-medium">Agile
+                            Strategy</span>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div
+                    class="group bg-white dark:bg-gray-800 rounded-3xl p-6 transition-all duration-500 hover:shadow-2xl border border-transparent hover:border-gray-200 dark:hover:border-gray-700 project-card flex flex-col h-full">
+                    <div class="flex justify-between items-start mb-6">
+                        <div
+                            class="w-12 h-12 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center text-purple-600 dark:text-purple-400">
+                            <span class="material-symbols-outlined">database</span>
+                        </div>
+                        <span class="text-xs font-mono text-gray-500">2025</span>
+                    </div>
+                    <div class="flex-grow">
+                        <h3
+                            class="text-2xl font-display mb-3 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition">
+                            Scalable Database Simulation</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-6">Utilized PostgreSQL and Docker to simulate a
+                            social media platform, scaling it up with large inserts and ensuring strong injection
+                            security.</p>
+                    </div>
+                    <div class="flex gap-2 flex-wrap mt-auto">
+                        <span
+                            class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-xs font-medium">PostgreSQL</span>
+                        <span
+                            class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-xs font-medium">Docker</span>
+                        <span
+                            class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-xs font-medium">Security</span>
+                    </div>
+                </div>
+
+                <!-- Project 4 (Offset for staggered look) -->
+                <div class="group bg-white dark:bg-gray-800 rounded-3xl p-6 transition-all duration-500 hover:shadow-2xl border border-transparent hover:border-gray-200 dark:hover:border-gray-700 project-card flex flex-col h-full"
+                    style="transform: translateY(40px);">
+                    <div class="flex justify-between items-start mb-6">
+                        <div
+                            class="w-12 h-12 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center text-orange-600 dark:text-orange-400">
+                            <span class="material-symbols-outlined">memory</span>
+                        </div>
+                        <span class="text-xs font-mono text-gray-500">2025</span>
+                    </div>
+                    <div class="flex-grow">
+                        <h3
+                            class="text-2xl font-display mb-3 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition">
+                            Hardware Image Processing & Crypto</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-6">Implemented matrix multiplication on DE10-Lite
+                            FPGA via Assembly and C. Also developed a Diffie-Hellman Key Exchange algorithm in Java.</p>
+                    </div>
+                    <div class="flex gap-2 flex-wrap mt-auto">
+                        <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-xs font-medium">C /
+                            Assembly</span>
+                        <span
+                            class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-xs font-medium">Java</span>
+                        <span
+                            class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-xs font-medium">Cryptography</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ticker Section -->
+    <section class="py-12 bg-primary text-white overflow-hidden border-y border-white/10">
+        <div class="ticker-wrap relative">
+            <div class="absolute top-0 left-0 w-24 h-full bg-gradient-to-r from-primary to-transparent z-10"></div>
+            <div class="absolute top-0 right-0 w-24 h-full bg-gradient-to-l from-primary to-transparent z-10"></div>
+
+            <div class="ticker">
+                <span class="text-4xl font-display italic mx-8">Systems Optimization</span>
+                <span class="text-4xl mx-8 opacity-50">✦</span>
+                <span class="text-4xl font-display italic mx-8">Full Stack Engineering</span>
+                <span class="text-4xl mx-8 opacity-50">✦</span>
+                <span class="text-4xl font-display italic mx-8">Data Structures</span>
+                <span class="text-4xl mx-8 opacity-50">✦</span>
+                <span class="text-4xl font-display italic mx-8">Algorithms</span>
+                <span class="text-4xl mx-8 opacity-50">✦</span>
+                <span class="text-4xl font-display italic mx-8">Systems Optimization</span>
+                <span class="text-4xl mx-8 opacity-50">✦</span>
+                <span class="text-4xl font-display italic mx-8">Full Stack Engineering</span>
+                <span class="text-4xl mx-8 opacity-50">✦</span>
+                <span class="text-4xl font-display italic mx-8">Data Structures</span>
+                <span class="text-4xl mx-8 opacity-50">✦</span>
+                <span class="text-4xl font-display italic mx-8">Algorithms</span>
+                <span class="text-4xl mx-8 opacity-50">✦</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience & Certifications -->
+    <section class="py-24 px-6 bg-[#f8f5f2] dark:bg-[#1a1a1a]">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="font-display text-4xl mb-12 text-center reveal-text">Experience & Certifications</h2>
+            <div class="grid md:grid-cols-3 gap-6 stagger-cards">
+                <div
+                    class="p-8 border border-gray-300 dark:border-gray-700 rounded-3xl bg-transparent relative hover:bg-white dark:hover:bg-gray-800 transition duration-500 hover:shadow-xl group">
+                    <span
+                        class="material-symbols-outlined text-4xl text-gray-400 dark:text-gray-500 mb-4 group-hover:text-blue-500 transition">work_history</span>
+                    <h4 class="text-xl font-bold mb-2">Financial Manager</h4>
+                    <p class="text-sm font-medium opacity-60 mb-4">Konglig Datasektion KTH • Jul - Oct 2025</p>
+                    <p class="text-base text-gray-700 dark:text-gray-300">Managed financial oversight, budget
+                        allocation, and authorized large-scale event proposals for a student chapter with 80+ active
+                        members.</p>
+                </div>
+
+                <div
+                    class="p-8 border border-gray-300 dark:border-gray-700 rounded-3xl bg-transparent relative hover:bg-white dark:hover:bg-gray-800 transition duration-500 hover:shadow-xl group mt-0 md:mt-8">
+                    <span
+                        class="material-symbols-outlined text-4xl text-gray-400 dark:text-gray-500 mb-4 group-hover:text-purple-500 transition">verified</span>
+                    <h4 class="text-xl font-bold mb-2">Computer & Peripheral Hardware</h4>
+                    <p class="text-sm font-medium opacity-60 mb-4">Coursera & Illinois Tech • 2024</p>
+                    <p class="text-base text-gray-700 dark:text-gray-300">Certified understanding of computer
+                        architecture, components, and hardware interaction principles.</p>
+                </div>
+
+                <div
+                    class="p-8 border border-gray-300 dark:border-gray-700 rounded-3xl bg-transparent relative hover:bg-white dark:hover:bg-gray-800 transition duration-500 hover:shadow-xl group mt-0 md:mt-16">
+                    <span
+                        class="material-symbols-outlined text-4xl text-gray-400 dark:text-gray-500 mb-4 group-hover:text-orange-500 transition">verified</span>
+                    <h4 class="text-xl font-bold mb-2">McKinsey Forward</h4>
+                    <p class="text-sm font-medium opacity-60 mb-4">McKinsey & Company • 2025</p>
+                    <p class="text-base text-gray-700 dark:text-gray-300">Earned the Forward Badge, demonstrating
+                        business acumen, strategic thinking, and leadership readiness.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Area -->
+    <footer class="bg-primary text-white py-20 px-6 rounded-t-[3rem] mx-2 md:mx-6 mb-2 mt-12 relative overflow-hidden"
+        id="contact">
+        <div
+            class="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-b from-blue-900/20 to-purple-900/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none">
+        </div>
+
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between relative z-10 footer-content">
+            <div class="mb-16 md:mb-0">
+                <div
+                    class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-primary font-display text-2xl italic mb-8 shadow-[0_0_30px_rgba(255,255,255,0.3)]">
+                    SB</div>
+                <h2 class="font-display text-5xl md:text-7xl mb-8 leading-[0.9]">Let's build<br />something <span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">robust.</span>
+                </h2>
+                <a class="inline-flex items-center gap-3 bg-white text-primary px-8 py-4 rounded-full font-medium hover:bg-gray-200 transition transform hover:scale-105"
+                    href="mailto:subodh.bhagwat@icloud.com">
+                    subodh.bhagwat@icloud.com
+                    <span class="material-symbols-outlined">mail</span>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-2 gap-12 md:gap-24 mt-12 md:mt-0">
+                <div>
+                    <h4 class="text-sm font-bold uppercase tracking-widest opacity-50 mb-6 font-sans">Contact</h4>
+                    <ul class="space-y-4 font-sans">
+                        <li><a class="hover:text-blue-400 transition-colors flex items-center gap-2 group"
+                                href="https://linkedin.com/in/subodh-bhagwat" target="_blank"><span
+                                    class="w-0 h-px bg-blue-400 group-hover:w-4 transition-all duration-300"></span>LinkedIn</a>
+                        </li>
+                        <li><a class="hover:text-blue-400 transition-colors flex items-center gap-2 group"
+                                href="https://github.com/oniwasgone" target="_blank"><span
+                                    class="w-0 h-px bg-blue-400 group-hover:w-4 transition-all duration-300"></span>GitHub</a>
+                        </li>
+                        <li class="flex items-center gap-2 text-gray-300 opacity-80 mt-2">+46 793482461</li>
+                        <li class="flex items-center gap-2 text-gray-300 opacity-80">Stockholm, Sweden</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-sm font-bold uppercase tracking-widest opacity-50 mb-6 font-sans">Sitemap</h4>
+                    <ul class="space-y-4 font-sans">
+                        <li><a class="hover:text-emerald-400 transition-colors flex items-center gap-2 group"
+                                href="#work"><span
+                                    class="w-0 h-px bg-emerald-400 group-hover:w-4 transition-all duration-300"></span>Projects</a>
+                        </li>
+                        <li><a class="hover:text-emerald-400 transition-colors flex items-center gap-2 group"
+                                href="#about"><span
+                                    class="w-0 h-px bg-emerald-400 group-hover:w-4 transition-all duration-300"></span>About</a>
+                        </li>
+                        <li><a class="hover:text-emerald-400 transition-colors flex items-center gap-2 group"
+                                href="#"><span
+                                    class="w-0 h-px bg-emerald-400 group-hover:w-4 transition-all duration-300"></span>Resume
+                                PDF</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div
+            class="max-w-6xl mx-auto mt-24 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between text-sm opacity-50 relative z-10 font-sans">
+            <p>© 2026 Subodh Bhagwat. All Rights Reserved.</p>
+            <p>Developed with precision.</p>
+        </div>
+    </footer>
+
+    <!-- GSAP & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <!-- Lenis -->
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+
+    <!-- Custom Application Logic -->
+    <script src="app.js"></script>
+</body>
+
+</html>
