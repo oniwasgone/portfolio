@@ -82,6 +82,10 @@
         .lenis.lenis-scrolling iframe {
             pointer-events: none;
         }
+
+        html {
+            overscroll-behavior: none;
+        }
     </style>
 </head>
 
@@ -97,7 +101,7 @@
                 SB</div>
             <span class="font-semibold tracking-tight">Subodh Bhagwat</span>
         </div>
-        <div class="hidden md:flex gap-8 text-sm font-medium">
+        <div class="hidden md:flex gap-8 text-sm font-medium absolute left-1/2 -translate-x-1/2">
             <a class="hover:text-gray-500 dark:hover:text-gray-300 transition" href="#work">Projects</a>
             <a class="hover:text-gray-500 dark:hover:text-gray-300 transition" href="#about">About</a>
             <a class="hover:text-gray-500 dark:hover:text-gray-300 transition" href="#contact">Contact</a>

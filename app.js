@@ -50,6 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // --- GSAP Animations ---
     gsap.registerPlugin(ScrollTrigger);
+    ScrollTrigger.config({ ignoreMobileResize: true });
 
     // 1. Initial Hero Load Animation
     const heroTl = gsap.timeline();
