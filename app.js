@@ -177,23 +177,40 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
     );
+    // 5b. Project Carousel Swiper Logic
+    if (document.querySelector('.project-swiper')) {
+        const projectSwiper = new Swiper('.project-swiper', {
+            loop: true,
+            loopedSlides: 5,
+            slidesPerView: 'auto',
+            centeredSlides: true,
+            spaceBetween: 32, // gap-8 equivalent
+            navigation: {
+                nextEl: '.next-project',
+                prevEl: '.prev-project',
+            },
+            keyboard: {
+                enabled: true,
+            },
+            grabCursor: true,
+            speed: 600,
+        });
 
-    const projectCards = gsap.utils.toArray('.project-card');
-    projectCards.forEach((card, i) => {
-        gsap.fromTo(card,
-            { y: window.innerWidth > 768 && i % 2 !== 0 ? 100 : 50, opacity: 0 }, // Staggered initial y based on column
+        // Entrance animation
+        gsap.fromTo('.project-swiper',
+            { y: 60, opacity: 0 },
             {
-                y: window.innerWidth > 768 && i % 2 !== 0 ? 40 : 0, // Keep the staggered layout on desktop
+                y: 0,
                 opacity: 1,
                 duration: 1.2,
                 ease: "power3.out",
                 scrollTrigger: {
-                    trigger: card,
+                    trigger: '.project-carousel-viewport',
                     start: "top 85%",
                 }
             }
         );
-    });
+    }
 
     // 6. Experience Cards Stagger
     const staggerContainers = gsap.utils.toArray('.stagger-cards');

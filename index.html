@@ -85,6 +85,25 @@
 
         html {
             overscroll-behavior: none;
+            overflow-x: hidden;
+        }
+
+        /* Swiper Overrides */
+
+        .project-swiper .swiper-slide {
+            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                filter 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0.5;
+            filter: blur(2px);
+            transform: scale(0.9);
+            height: auto;
+        }
+
+        .project-swiper .swiper-slide-active {
+            opacity: 1;
+            filter: blur(0px);
+            transform: scale(1);
         }
     </style>
 </head>
@@ -245,130 +264,196 @@
                     <p class="text-xs font-bold tracking-widest uppercase mb-4 opacity-60">Selected Work</p>
                     <h2 class="font-display text-4xl md:text-5xl">Engineering Projects</h2>
                 </div>
-                <a class="hidden md:inline-flex items-center gap-2 border-b border-current pb-1 hover:opacity-60 transition mt-4 md:mt-0 group"
-                    href="https://github.com/oniwasgone" target="_blank">
-                    View GitHub <span
-                        class="material-symbols-outlined text-sm group-hover:translate-x-1 group-hover:-translate-y-1 transition transform">arrow_outward</span>
-                </a>
+                <div class="hidden md:flex items-center gap-4 mt-4 md:mt-0">
+                    <button
+                        class="prev-project w-12 h-12 rounded-full border border-gray-400 dark:border-gray-600 flex items-center justify-center hover:bg-white dark:hover:bg-gray-700 transition-colors"><span
+                            class="material-symbols-outlined">arrow_back</span></button>
+                    <button
+                        class="next-project w-12 h-12 rounded-full border border-gray-400 dark:border-gray-600 flex items-center justify-center hover:bg-white dark:hover:bg-gray-700 transition-colors"><span
+                            class="material-symbols-outlined">arrow_forward</span></button>
+                    <a class="inline-flex items-center gap-2 border-b border-current pb-1 hover:opacity-60 transition ml-4 group"
+                        href="https://github.com/oniwasgone" target="_blank">
+                        View GitHub <span
+                            class="material-symbols-outlined text-sm group-hover:translate-x-1 group-hover:-translate-y-1 transition transform">arrow_outward</span>
+                    </a>
+                </div>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- Project 1 -->
-                <div
-                    class="group bg-white dark:bg-gray-800 rounded-3xl p-6 transition-all duration-500 hover:shadow-2xl border border-transparent hover:border-gray-200 dark:hover:border-gray-700 project-card flex flex-col h-full">
-                    <div class="flex justify-between items-start mb-6">
-                        <div
-                            class="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400">
-                            <span class="material-symbols-outlined">smart_toy</span>
-                        </div>
-                        <span class="text-xs font-mono text-gray-500">2026</span>
-                    </div>
-                    <div class="flex-grow">
-                        <h3
-                            class="text-2xl font-display mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition">
-                            Realtime AI Sales Assistant</h3>
-                        <p class="text-gray-600 dark:text-gray-400 mb-6">Engineered a local Python application
-                            integrating the OpenAI API to provide real-time context assistance during sales calls.
-                            Implemented live audio transcription and context-aware query handling, significantly
-                            reducing response time.</p>
-                    </div>
-                    <div class="flex gap-2 flex-wrap mt-auto">
-                        <span
-                            class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-xs font-medium">Python</span>
-                        <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-xs font-medium">OpenAI
-                            API</span>
-                        <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-xs font-medium">AI &
-                            Audio</span>
-                    </div>
-                </div>
+            <!-- Mobile Navigation Arrows -->
+            <div class="flex md:hidden justify-between mb-8 header-reveal">
+                <button
+                    class="prev-project w-12 h-12 rounded-full border border-gray-400 dark:border-gray-600 flex items-center justify-center hover:bg-white dark:hover:bg-gray-700 transition-colors"><span
+                        class="material-symbols-outlined">arrow_back</span></button>
+                <a class="inline-flex items-center gap-2 border-b border-current pb-1 hover:opacity-60 transition group text-sm"
+                    href="https://github.com/oniwasgone" target="_blank">
+                    GitHub <span
+                        class="material-symbols-outlined text-sm group-hover:translate-x-1 group-hover:-translate-y-1 transition transform">arrow_outward</span>
+                </a>
+                <button
+                    class="next-project w-12 h-12 rounded-full border border-gray-400 dark:border-gray-600 flex items-center justify-center hover:bg-white dark:hover:bg-gray-700 transition-colors"><span
+                        class="material-symbols-outlined">arrow_forward</span></button>
+            </div>
+        </div> <!-- End of max-w-6xl -->
 
-                <!-- Project 2 -->
-                <div class="group bg-white dark:bg-gray-800 rounded-3xl p-6 transition-all duration-500 hover:shadow-2xl border border-transparent hover:border-gray-200 dark:hover:border-gray-700 project-card flex flex-col h-full"
-                    style="transform: translateY(40px);">
-                    <div class="flex justify-between items-start mb-6">
+        <div class="relative w-full pb-12 mt-8 project-carousel-viewport">
+            <div class="swiper project-swiper w-full">
+                <div class="swiper-wrapper !flex !flex-row items-stretch pb-10">
+                    <!-- Project 1 -->
+                    <div class="swiper-slide w-[85%] sm:w-[65%] md:w-[50%] lg:w-[45%] xl:w-[40%] flex-shrink-0 h-auto">
                         <div
-                            class="w-12 h-12 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
-                            <span class="material-symbols-outlined">monitoring</span>
+                            class="group bg-white dark:bg-gray-800 rounded-3xl p-6 transition-all duration-500 hover:shadow-2xl border border-transparent hover:border-gray-200 dark:hover:border-gray-700 project-card flex flex-col h-full">
+                            <div class="flex justify-between items-start mb-6">
+                                <div
+                                    class="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400">
+                                    <span class="material-symbols-outlined">smart_toy</span>
+                                </div>
+                                <span class="text-xs font-mono text-gray-500">2026</span>
+                            </div>
+                            <div class="flex-grow">
+                                <h3
+                                    class="text-2xl font-display mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition">
+                                    Realtime AI Sales Assistant</h3>
+                                <p class="text-gray-600 dark:text-gray-400 mb-6">Engineered a local Python application
+                                    integrating the OpenAI API to provide real-time context assistance during sales
+                                    calls. Implemented live audio transcription and context-aware query handling,
+                                    significantly reducing response time.</p>
+                            </div>
+                            <div class="flex gap-2 flex-wrap mt-auto">
+                                <span
+                                    class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-xs font-medium">Python</span>
+                                <span
+                                    class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-xs font-medium">OpenAI
+                                    API</span>
+                                <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-xs font-medium">AI
+                                    & Audio</span>
+                            </div>
                         </div>
-                        <span class="text-xs font-mono text-gray-500">2026</span>
                     </div>
-                    <div class="flex-grow">
-                        <h3
-                            class="text-2xl font-display mb-3 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition">
-                            Client Data Visualization Dashboard</h3>
-                        <p class="text-gray-600 dark:text-gray-400 mb-6">Co-developed a frontend visualization tool for
-                            Bengt Dahlgren (Battery Consulting) to render complex datasets from a Python backend.
-                            Collaborated within an 8-person Agile team where I handled a scrum-master role and actively
-                            coded in Dash.</p>
-                    </div>
-                    <div class="flex gap-2 flex-wrap mt-auto">
-                        <span
-                            class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-xs font-medium">Dash</span>
-                        <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-xs font-medium">Python
-                            Frontend</span>
-                        <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-xs font-medium">Agile
-                            Strategy</span>
-                    </div>
-                </div>
 
-                <!-- Project 3 -->
-                <div
-                    class="group bg-white dark:bg-gray-800 rounded-3xl p-6 transition-all duration-500 hover:shadow-2xl border border-transparent hover:border-gray-200 dark:hover:border-gray-700 project-card flex flex-col h-full">
-                    <div class="flex justify-between items-start mb-6">
+                    <!-- Project 2 -->
+                    <div class="swiper-slide w-[85%] sm:w-[65%] md:w-[50%] lg:w-[45%] xl:w-[40%] flex-shrink-0 h-auto">
                         <div
-                            class="w-12 h-12 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center text-purple-600 dark:text-purple-400">
-                            <span class="material-symbols-outlined">database</span>
+                            class="group bg-white dark:bg-gray-800 rounded-3xl p-6 transition-all duration-500 hover:shadow-2xl border border-transparent hover:border-gray-200 dark:hover:border-gray-700 project-card flex flex-col h-full">
+                            <div class="flex justify-between items-start mb-6">
+                                <div
+                                    class="w-12 h-12 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
+                                    <span class="material-symbols-outlined">monitoring</span>
+                                </div>
+                                <span class="text-xs font-mono text-gray-500">2026</span>
+                            </div>
+                            <div class="flex-grow">
+                                <h3
+                                    class="text-2xl font-display mb-3 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition">
+                                    Client Data Visualization Dashboard</h3>
+                                <p class="text-gray-600 dark:text-gray-400 mb-6">Co-developed a frontend visualization
+                                    tool for Bengt Dahlgren (Battery Consulting) to render complex datasets from a
+                                    Python backend. Collaborated within an 8-person Agile team where I handled a
+                                    scrum-master role and actively coded in Dash.</p>
+                            </div>
+                            <div class="flex gap-2 flex-wrap mt-auto">
+                                <span
+                                    class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-xs font-medium">Dash</span>
+                                <span
+                                    class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-xs font-medium">Python
+                                    Frontend</span>
+                                <span
+                                    class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-xs font-medium">Agile
+                                    Strategy</span>
+                            </div>
                         </div>
-                        <span class="text-xs font-mono text-gray-500">2025</span>
                     </div>
-                    <div class="flex-grow">
-                        <h3
-                            class="text-2xl font-display mb-3 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition">
-                            Local Database Simulation</h3>
-                        <p class="text-gray-600 dark:text-gray-400 mb-6">Utilized PostgreSQL and Docker to simulate a
-                            social media platform and scaled it up with large inserts and injection security.</p>
-                    </div>
-                    <div class="flex gap-2 flex-wrap mt-auto">
-                        <span
-                            class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-xs font-medium">PostgreSQL</span>
-                        <span
-                            class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-xs font-medium">Docker</span>
-                        <span
-                            class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-xs font-medium">Security</span>
-                    </div>
-                </div>
 
-                <!-- Project 4 (Offset for staggered look) -->
-                <div class="group bg-white dark:bg-gray-800 rounded-3xl p-6 transition-all duration-500 hover:shadow-2xl border border-transparent hover:border-gray-200 dark:hover:border-gray-700 project-card flex flex-col h-full"
-                    style="transform: translateY(40px);">
-                    <div class="flex justify-between items-start mb-6">
+                    <!-- Project 3 -->
+                    <div class="swiper-slide w-[85%] sm:w-[65%] md:w-[50%] lg:w-[45%] xl:w-[40%] flex-shrink-0 h-auto">
                         <div
-                            class="w-12 h-12 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center text-orange-600 dark:text-orange-400">
-                            <span class="material-symbols-outlined">memory</span>
+                            class="group bg-white dark:bg-gray-800 rounded-3xl p-6 transition-all duration-500 hover:shadow-2xl border border-transparent hover:border-gray-200 dark:hover:border-gray-700 project-card flex flex-col h-full">
+                            <div class="flex justify-between items-start mb-6">
+                                <div
+                                    class="w-12 h-12 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center text-purple-600 dark:text-purple-400">
+                                    <span class="material-symbols-outlined">database</span>
+                                </div>
+                                <span class="text-xs font-mono text-gray-500">2025</span>
+                            </div>
+                            <div class="flex-grow">
+                                <h3
+                                    class="text-2xl font-display mb-3 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition">
+                                    Local Database Simulation</h3>
+                                <p class="text-gray-600 dark:text-gray-400 mb-6">Utilized PostgreSQL and Docker to
+                                    simulate a social media platform and scaled it up with large inserts and injection
+                                    security.</p>
+                            </div>
+                            <div class="flex gap-2 flex-wrap mt-auto">
+                                <span
+                                    class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-xs font-medium">PostgreSQL</span>
+                                <span
+                                    class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-xs font-medium">Docker</span>
+                                <span
+                                    class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-xs font-medium">Security</span>
+                            </div>
                         </div>
-                        <span class="text-xs font-mono text-gray-500">2025</span>
                     </div>
-                    <div class="flex-grow">
-                        <h3
-                            class="text-2xl font-display mb-3 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition">
-                            Hardware Image Processing & Crypto</h3>
-                        <p class="text-gray-600 dark:text-gray-400 mb-6">Implemented matrix multiplication on DE10-Lite
-                            via Assembly and C to understand low-level applications. Also developed a Diffie-Hellman Key
-                            Exchange algorithm in Java to simulate secure information exchange.</p>
+
+                    <!-- Project 4 -->
+                    <div class="swiper-slide w-[85%] sm:w-[65%] md:w-[50%] lg:w-[45%] xl:w-[40%] flex-shrink-0 h-auto">
+                        <div
+                            class="group bg-white dark:bg-gray-800 rounded-3xl p-6 transition-all duration-500 hover:shadow-2xl border border-transparent hover:border-gray-200 dark:hover:border-gray-700 project-card flex flex-col h-full">
+                            <div class="flex justify-between items-start mb-6">
+                                <div
+                                    class="w-12 h-12 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center text-orange-600 dark:text-orange-400">
+                                    <span class="material-symbols-outlined">memory</span>
+                                </div>
+                                <span class="text-xs font-mono text-gray-500">2025</span>
+                            </div>
+                            <div class="flex-grow">
+                                <h3
+                                    class="text-2xl font-display mb-3 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition">
+                                    Hardware Image Processing</h3>
+                                <p class="text-gray-600 dark:text-gray-400 mb-6">Implemented matrix multiplication on
+                                    DE10-Lite via Assembly and C to understand low-level applications and hardware
+                                    acceleration limits.</p>
+                            </div>
+                            <div class="flex gap-2 flex-wrap mt-auto">
+                                <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-xs font-medium">C
+                                    / Assembly</span>
+                                <span
+                                    class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-xs font-medium">DE10-Lite</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="flex gap-2 flex-wrap mt-auto">
-                        <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-xs font-medium">C /
-                            Assembly</span>
-                        <span
-                            class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-xs font-medium">Java</span>
-                        <span
-                            class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-xs font-medium">Cryptography</span>
+
+                    <!-- Project 5 -->
+                    <div class="swiper-slide w-[85%] sm:w-[65%] md:w-[50%] lg:w-[45%] xl:w-[40%] flex-shrink-0 h-auto">
+                        <div
+                            class="group bg-white dark:bg-gray-800 rounded-3xl p-6 transition-all duration-500 hover:shadow-2xl border border-transparent hover:border-gray-200 dark:hover:border-gray-700 project-card flex flex-col h-full">
+                            <div class="flex justify-between items-start mb-6">
+                                <div
+                                    class="w-12 h-12 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center text-red-600 dark:text-red-400">
+                                    <span class="material-symbols-outlined">key</span>
+                                </div>
+                                <span class="text-xs font-mono text-gray-500">2025</span>
+                            </div>
+                            <div class="flex-grow">
+                                <h3
+                                    class="text-2xl font-display mb-3 group-hover:text-red-600 dark:group-hover:text-red-400 transition">
+                                    Diffie-Hellman Key Exchange</h3>
+                                <p class="text-gray-600 dark:text-gray-400 mb-6">Developed a
+                                    Diffie-Hellman Key Exchange algorithm in Java to simulate secure information
+                                    exchange using public-key cryptography and modular exponentiation.</p>
+                            </div>
+                            <div class="flex gap-2 flex-wrap mt-auto">
+                                <span
+                                    class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-xs font-medium">Java</span>
+                                <span
+                                    class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-xs font-medium">Cryptography</span>
+                                <span
+                                    class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-xs font-medium">Security</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
     <!-- Ticker Section -->
     <section class="py-12 bg-primary text-white overflow-hidden border-y border-white/10">
         <div class="ticker-wrap relative">
@@ -400,9 +485,9 @@
     <section class="py-24 px-6 bg-[#f8f5f2] dark:bg-[#1a1a1a]">
         <div class="max-w-6xl mx-auto">
             <h2 class="font-display text-4xl mb-12 text-center reveal-text">Experience & Certifications</h2>
-            <div class="grid md:grid-cols-3 gap-6 stagger-cards">
+            <div class="grid md:grid-cols-3 gap-6 stagger-cards items-stretch">
                 <div
-                    class="p-8 border border-gray-300 dark:border-gray-700 rounded-3xl bg-transparent relative hover:bg-white dark:hover:bg-gray-800 transition duration-500 hover:shadow-xl group">
+                    class="p-8 border border-gray-300 dark:border-gray-700 rounded-3xl bg-transparent relative hover:bg-white dark:hover:bg-gray-800 transition duration-500 hover:shadow-xl group mt-0 md:mt-8 h-full flex flex-col justify-between">
                     <span
                         class="material-symbols-outlined text-4xl text-gray-400 dark:text-gray-500 mb-4 group-hover:text-blue-500 transition">work_history</span>
                     <h4 class="text-xl font-bold mb-2">Financial Advisor</h4>
@@ -413,7 +498,7 @@
                 </div>
 
                 <div
-                    class="p-8 border border-gray-300 dark:border-gray-700 rounded-3xl bg-transparent relative hover:bg-white dark:hover:bg-gray-800 transition duration-500 hover:shadow-xl group mt-0 md:mt-8">
+                    class="p-8 border border-gray-300 dark:border-gray-700 rounded-3xl bg-transparent relative hover:bg-white dark:hover:bg-gray-800 transition duration-500 hover:shadow-xl group mt-0 md:mt-8 h-full flex flex-col justify-between">
                     <span
                         class="material-symbols-outlined text-4xl text-gray-400 dark:text-gray-500 mb-4 group-hover:text-purple-500 transition">verified</span>
                     <h4 class="text-xl font-bold mb-2">Computer & Peripheral Hardware</h4>
@@ -423,7 +508,7 @@
                 </div>
 
                 <div
-                    class="p-8 border border-gray-300 dark:border-gray-700 rounded-3xl bg-transparent relative hover:bg-white dark:hover:bg-gray-800 transition duration-500 hover:shadow-xl group mt-0 md:mt-16">
+                    class="p-8 border border-gray-300 dark:border-gray-700 rounded-3xl bg-transparent relative hover:bg-white dark:hover:bg-gray-800 transition duration-500 hover:shadow-xl group mt-0 md:mt-8 h-full flex flex-col justify-between">
                     <span
                         class="material-symbols-outlined text-4xl text-gray-400 dark:text-gray-500 mb-4 group-hover:text-orange-500 transition">verified</span>
                     <h4 class="text-xl font-bold mb-2">McKinsey Forward</h4>
@@ -502,6 +587,9 @@
 
     <!-- Lenis -->
     <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     <!-- Custom Application Logic -->
     <script src="app.js"></script>
