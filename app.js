@@ -194,6 +194,14 @@ document.addEventListener("DOMContentLoaded", () => {
             },
             grabCursor: true,
             speed: 600,
+            on: {
+                init: function () {
+                    // Force a recalculation on load to guarantee the first slide gets active class
+                    setTimeout(() => {
+                        this.update();
+                    }, 50);
+                }
+            }
         });
 
         // Entrance animation
